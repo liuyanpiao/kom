@@ -30,3 +30,11 @@ if __name__ == "__main__":
     state = torch_load_cpu(args.ckpt_path)
     print(f"Done with reading: {time.time() - start_time} seconds")
     save_numpy(state["model"], args.output_folder)
+def get_all_tool_names() -> List[str]:
+    """Get a list of all possible tool names."""
+    return (
+        list(_BASE_TOOLS)
+        + list(_EXTRA_OPTIONAL_TOOLS)
+        + list(_EXTRA_LLM_TOOLS)
+        + list(_LLM_TOOLS)
+    )
